@@ -1,0 +1,60 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>User Signup</title>
+</head>
+<body>
+    <h1>Signup</h1>
+        <form method="post" action="{{ url_for('index') }}">
+            <table>
+                <tr>
+                    <td><label for="username">Username</label></td>
+                    <td>
+                        <input name="username" type="text" value="{{ request.args.get('username') }}">
+                        <span class="error"> 
+                            {% if request.args.get('message1') %}
+                            {{ request.args.get('message1') }}
+                            {% endif %}
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="password">Password</label></td>
+                    <td>
+                        <input name="password" type="password">
+                        <span class="error"> 
+                            {% if request.args.get('message2') %}
+                            {{ request.args.get('message2') }}
+                            {% endif %}
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="verify">Verify Password</label></td>
+                    <td>
+                        <input name="verify" type="password">
+                        <span class="error"> 
+                            {% if request.args.get('message3') %}
+                            {{ request.args.get('message3') }}
+                            {% endif %}
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="email">Email (optional)</label></td>
+                    <td>
+                        <input name="email" value="{{ request.args.get('email') }}">
+                        <span class="error"> 
+                            {% if request.args.get('message4') %}
+                            {{ request.args.get('message4') }}
+                            {% endif %}
+                        </span>
+                    </td>
+                </tr>
+            </table>
+            <input type="submit">
+        </form>
+    </body>
+</html>
